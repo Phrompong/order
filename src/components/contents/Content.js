@@ -118,24 +118,38 @@ export default function Content() {
         </div>
       </div>
 
-      <Modal
-        show={show}
-        fullscreen={fullscreen}
-        size="lg"
-        onHide={handleClose}
-        style={{ width: "100%" }}
-      >
+      <Modal show={show} size="lg" onHide={handleClose}>
         <Modal.Header closeButton>
           <h4>ผัดกระเพรา</h4>
         </Modal.Header>
-        <Modal.Body style={{ display: "flex", justifyContent: "center" }}>
+        <Modal.Body
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+          }}
+        >
           <img
             src="https://www.igethow.com/wp-content/uploads/2021/02/%E0%B8%A3%E0%B8%B9%E0%B8%9B%E0%B8%9C%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%9E%E0%B8%A3%E0%B8%B2-01-01-01-800x445.jpg"
-            width="80%"
-            height="30%"
+            width="100%"
+            height="50%"
           ></img>
+          <h3>ผัดกระเพรา</h3>
+          <h4>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</h4>
+          <textarea
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="3"
+          ></textarea>
         </Modal.Body>
-        <Modal.Footer></Modal.Footer>
+        <Modal.Footer>
+          <button type="button" class="btn btn-secondary" onClick={handleClose}>
+            ยกเลิก
+          </button>
+          <button type="button" class="btn btn-warning" onClick={handleClose}>
+            ยืนยัน
+          </button>
+        </Modal.Footer>
       </Modal>
     </>
   );
