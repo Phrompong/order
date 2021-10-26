@@ -1,6 +1,7 @@
 import "./App.css";
 import Content from "./components/contents/Content";
 import TopNav from "./components/TopNav";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (

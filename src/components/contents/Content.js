@@ -1,5 +1,9 @@
 import "./Content.css";
-import React from "react";
+import React, { useState } from "react";
+import Modal from "react-bootstrap/Modal";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 export default function Content() {
   const foodList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -24,6 +28,12 @@ export default function Content() {
     "x",
     "x",
   ];
+
+  const [fullscreen, setFullscreen] = useState(true);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <>
@@ -78,7 +88,7 @@ export default function Content() {
           }}
         >
           {foodList.map((o) => (
-            <div className="card-menu">
+            <div className="card-menu" onClick={handleShow}>
               <div>
                 <table style={{ border: "10px" }}>
                   <tr>
@@ -107,6 +117,26 @@ export default function Content() {
           ))}
         </div>
       </div>
+
+      <Modal
+        show={show}
+        fullscreen={fullscreen}
+        size="lg"
+        onHide={handleClose}
+        style={{ width: "100%" }}
+      >
+        <Modal.Header closeButton>
+          <h4>ผัดกระเพรา</h4>
+        </Modal.Header>
+        <Modal.Body style={{ display: "flex", justifyContent: "center" }}>
+          <img
+            src="https://www.igethow.com/wp-content/uploads/2021/02/%E0%B8%A3%E0%B8%B9%E0%B8%9B%E0%B8%9C%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%9E%E0%B8%A3%E0%B8%B2-01-01-01-800x445.jpg"
+            width="80%"
+            height="30%"
+          ></img>
+        </Modal.Body>
+        <Modal.Footer></Modal.Footer>
+      </Modal>
     </>
   );
 }
