@@ -25,6 +25,7 @@ function App() {
         paddingTop: "10px",
         paddingBottom: "10px",
         width: "80%",
+        margin: "10px",
       }}
     >
       <TopNav />

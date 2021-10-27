@@ -1,12 +1,20 @@
 import "./Content.css";
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import Badge from "react-bootstrap/Badge";
 
 export default function Content() {
-  const foodList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const foodList = [
+    "xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx",
+    "xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx",
+    "xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx",
+    "xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx",
+    "xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx",
+    "xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx",
+    "xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx",
+    "xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx",
+    "xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx",
+  ];
 
   const typeList = [
     "x",
@@ -29,11 +37,14 @@ export default function Content() {
     "x",
   ];
 
-  const [fullscreen, setFullscreen] = useState(true);
-  const [show, setShow] = useState(false);
+  const optionsList = ["x", "x", "x", "x", "x"];
 
+  // * show modal
+  const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  // * value item
 
   return (
     <>
@@ -89,29 +100,43 @@ export default function Content() {
         >
           {foodList.map((o) => (
             <div className="card-menu" onClick={handleShow}>
-              <div>
-                <table style={{ border: "10px" }}>
-                  <tr>
-                    <td>
-                      <img
-                        src="https://www.igethow.com/wp-content/uploads/2021/02/%E0%B8%A3%E0%B8%B9%E0%B8%9B%E0%B8%9C%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%9E%E0%B8%A3%E0%B8%B2-01-01-01-800x445.jpg"
-                        width="100%"
-                        height="50%"
-                      ></img>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>ผัดกระเพรา</td>
-                  </tr>
-                  <tr>
-                    <td>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</td>
-                  </tr>
-                  <tr style={{ textAlign: "right" }}>
-                    <td>
-                      <h2>xx bath</h2>
-                    </td>
-                  </tr>
-                </table>
+              <div className="container" style={{ width: "500px" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    flexWrap: "wrap",
+                    justifyContent: "flex-end",
+                  }}
+                >
+                  <img
+                    src="https://www.igethow.com/wp-content/uploads/2021/02/%E0%B8%A3%E0%B8%B9%E0%B8%9B%E0%B8%9C%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%9E%E0%B8%A3%E0%B8%B2-01-01-01-800x445.jpg"
+                    width="100%"
+                  ></img>
+
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      flexWrap: "wrap",
+                      justifyContent: "flex-start",
+                      height: "100px",
+                    }}
+                  >
+                    <h4>ผัดกระเพรา</h4>
+                    <h6>{o}</h6>
+                  </div>
+
+                  <div
+                    style={{
+                      display: "flex",
+                      flexWrap: "wrap",
+                      justifyContent: "flex-end",
+                    }}
+                  >
+                    <h4>60 Bath</h4>
+                  </div>
+                </div>
               </div>
             </div>
           ))}
@@ -119,9 +144,6 @@ export default function Content() {
       </div>
 
       <Modal show={show} size="lg" onHide={handleClose}>
-        <Modal.Header closeButton>
-          <h4>ผัดกระเพรา</h4>
-        </Modal.Header>
         <Modal.Body
           style={{
             display: "flex",
@@ -134,13 +156,92 @@ export default function Content() {
             width="100%"
             height="50%"
           ></img>
-          <h3>ผัดกระเพรา</h3>
-          <h4>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</h4>
+          {/* topic */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+            }}
+          >
+            <h3>ผัดกระเพรา</h3>
+            <h3>60 Bath</h3>
+          </div>
+          {/* details */}
+          <p>
+            ข้าวผัดกระเพรา เป็นอาหารที่ทุกคนมักจะรู้จัก และคุ้มเคยอย่างดี
+            สาเหตุส่วนหนึ่งอาจเป็นเพราะเป็นอาหารที่ปรุงง่าย แถมรสชาติก็อร่อย
+            หลายคนเรียกอาหารจานนี้ว่า "อาหารสิ้นคิด"
+            เพราะเวลาไปกินข้าวที่ร้านอาหารตามสั่งแล้วคิดเมนูไม่ออกว่าจะกินอะไรดี
+            ก็จะนึกถึง "ข้าวกะเพราไข่ดาว" เป็นอันดับต้นๆ ส่วนประกอบหลัก ได้แก่
+            ใบกะเพรา กระเทียม พริกขี้หนู น้ำมัน เนื้อไก่ น้ำเปล่า น้ำปลา น้ำตาล
+            พริกไทยป่น และข้าวสุก แต่บางร้านอาจจะใส่ผัก เช่น ถั่วฝักยาว
+            หรือข้าวโพดอ่อน ลงไปด้วย เริ่มปรุงด้วย การเจียวกระเทียมพอเหลือง
+            ใส่พริกขี้หนู เนื้อไก่ เติมน้ำ ผัดจนสุก ปรุงรสด้วย น้ำปลา น้ำตาล
+            พริกไทยป่น แล้วใส่ใบกะเพราลงไปตอนท้าย ตักข้าวสุกใส่จาน
+            ราดด้วยผัดกะเพรา ทอดไข่ดาววางข้างเป็นอันเสร็จพิธี
+          </p>
+          {/* options */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              flexWrap: "wrap",
+              justifyContent: "center",
+            }}
+          >
+            {optionsList.map((o) => (
+              <div className="card-type">
+                <div>
+                  <h1>xxxxxx</h1>
+                </div>
+              </div>
+            ))}
+          </div>
+          {/* remark */}
           <textarea
             class="form-control"
             id="exampleFormControlTextarea1"
             rows="3"
+            placeholder="หมายเหตุ"
+            style={{ marginTop: "5%" }}
           ></textarea>
+          {/* item selected */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              marginTop: "3%",
+            }}
+          >
+            <Badge
+              pill
+              bg="light"
+              text="dark"
+              style={{ padding: "2%", borderStyle: "double" }}
+              variant="outline-primary"
+            >
+              <h4>-</h4>
+            </Badge>
+            <div
+              style={{ marginLeft: "2%", marginRight: "2%", fontSize: "30px" }}
+            >
+              0
+            </div>
+            <Badge
+              pill
+              bg="light"
+              text="dark"
+              style={{ padding: "2%", borderStyle: "double" }}
+            >
+              <h4>+</h4>
+            </Badge>
+            {/* <div className="card-menu" onClick={handleShow}>
+              <h1>0</h1>
+            </div>
+            <div className="card-seletItem">+</div> */}
+          </div>
         </Modal.Body>
         <Modal.Footer>
           <button type="button" class="btn btn-secondary" onClick={handleClose}>
