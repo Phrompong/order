@@ -74,3 +74,18 @@
   cursor: pointer;
   background-color: #000;
 }
+
+.btnOrder {
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 100px;
+}

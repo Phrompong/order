@@ -28,7 +28,6 @@ function App() {
         margin: "10px",
       }}
     >
-      <TopNav />
       <Content />
     </div>
   );

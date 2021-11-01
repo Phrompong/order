@@ -37,14 +37,17 @@ export default function Content() {
     "x",
   ];
 
-  const optionsList = ["x", "x", "x", "x", "x"];
+  const optionsList = ["x", "x", "x"];
 
-  // * show modal
+  // * show modal menu
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  // * value item
+  // * show modal order
+  const [showOrder, setShowOrder] = useState(false);
+  const handleCloseOrder = () => setShowOrder(false);
+  const handleShowOrder = () => setShowOrder(true);
 
   return (
     <>
@@ -53,6 +56,7 @@ export default function Content() {
           <h1>X</h1>
         </div>
       </div>
+
       {/* type list */}
       <div
         style={{
@@ -80,6 +84,7 @@ export default function Content() {
           ))}
         </div>
       </div>
+
       {/* menu list */}
       <div
         style={{
@@ -143,6 +148,7 @@ export default function Content() {
         </div>
       </div>
 
+      {/* detail menu  */}
       <Modal show={show} size="lg" onHide={handleClose}>
         <Modal.Body
           style={{
@@ -249,6 +255,90 @@ export default function Content() {
           </button>
           <button type="button" class="btn btn-warning" onClick={handleClose}>
             ยืนยัน
+          </button>
+        </Modal.Footer>
+      </Modal>
+
+      <button onClick={handleShowOrder} className="btnOrder" title="Go to top">
+        orders
+      </button>
+
+      {/* detail order  */}
+      <Modal show={showOrder} size="lg" onHide={handleCloseOrder}>
+        <Modal.Body
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            overflowY: "scroll",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+            }}
+          >
+            <h1>Order</h1>
+            <h3>โต๊ะที่ 1</h3>
+          </div>
+
+          {/* order selected */}
+          {optionsList.map((o) => (
+            <div
+              className="card"
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
+                marginTop: "10px",
+              }}
+            >
+              <img
+                src="https://www.igethow.com/wp-content/uploads/2021/02/%E0%B8%A3%E0%B8%B9%E0%B8%9B%E0%B8%9C%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%9E%E0%B8%A3%E0%B8%B2-01-01-01-800x445.jpg"
+                width="20%"
+                height="50%"
+              ></img>
+              <h5 style={{ marginLeft: "5px" }}>
+                ผัดกระเพราหมู <br />
+                <div style={{ display: "flex", flexDirection: "row" }}>
+                  <h6>+ไข่ดาว</h6>
+                  <h6 style={{ marginLeft: "10px" }}>+ไข่ดาว</h6>
+                </div>
+                <h6>comment : ไม่ใส่พริก</h6>
+              </h5>
+              <h5>test</h5>
+            </div>
+          ))}
+
+          {/* total */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              marginTop: "20px",
+            }}
+          >
+            <h1></h1>
+            <h3>ยอดรวม 280 Bath</h3>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            onClick={handleCloseOrder}
+          >
+            เลือกรายการอาหาร
+          </button>
+          <button
+            type="button"
+            class="btn btn-warning"
+            onClick={handleCloseOrder}
+          >
+            สั่งอาหาร
           </button>
         </Modal.Footer>
       </Modal>
