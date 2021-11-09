@@ -1,17 +1,13 @@
-# base image
-FROM node:14.15.0-slim
+FROM node
 
-# set working directory
-RUN mkdir /usr/src/app
-WORKDIR /usr/src/app
+WORKDIR /app
 
-# add `/usr/src/app/node_modules/.bin` to $PATH
-ENV PATH /usr/src/app/node_modules/.bin:$PATH
+COPY package.json .
 
-# install and cache app dependencies
-COPY package.json /usr/src/app/package.json
 RUN npm install
-RUN npm install react-scripts -g
 
-# start app
-CMD ["npm", "start"]
+COPY . .
+
+EXPOSE 3000
+
+CMD  ["npm","start"]
